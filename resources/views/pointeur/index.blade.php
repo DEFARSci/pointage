@@ -22,9 +22,11 @@
             <td>{{$pointeur->email}}</td>
             <td>{{$pointeur->phone}}</td>
             <td><a type="button"  href="{{route('getuserPointer',['id'=>$pointeur->id])}}">edit</td>
+            <td><a type="button"  href="{{route('voirPointer',['carte_id'=>$pointeur->carte_id])}}">show</td>
+
           </tr>
           @endforeach
-          
+
         </tbody>
       </table>
 @endsection

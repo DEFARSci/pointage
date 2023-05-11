@@ -15,7 +15,7 @@ class CreateUserPointersTable extends Migration
     {
         Schema::create('user_pointers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('carte_id')->unique();
+    $table->bigInteger('carte_id')->unique();
             $table->string('prenom')->nullable();
             $table->string('nom')->nullable();
             $table->string('email')->nullable();

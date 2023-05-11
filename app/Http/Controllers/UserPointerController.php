@@ -57,15 +57,18 @@ class UserPointerController extends Controller
     ->where('pointages.date','=',Carbon::now()->toDateString())
     ->select('user_pointers.*','pointages.*')
     ->get();
-     
+
      //dd($userPointer);
 
       //  $userPointer = DB::table('user_pointers')
       //           ->where('carte_id','=',233)
       //           ->get();
-       
+
       return response()->json($userPointer);
     }
+
+
+
 }
 
 

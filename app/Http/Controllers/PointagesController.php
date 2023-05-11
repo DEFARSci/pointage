@@ -75,4 +75,17 @@ class PointagesController extends Controller
         return View('pointeur.listPiontagedate',$data);
         
     }
+
+   public function voirpointer( $carte_id)
+{
+            $pointage = DB::table('user_pointers')
+        ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
+        ->where('carte_id','=',$carte_id)
+        ->select('user_pointers.*', 'pointages.*')
+        ->get();
+     
+           // dd($pointage);
+
+        return view('pointeur.show', compact('pointage'));
+}
 }
