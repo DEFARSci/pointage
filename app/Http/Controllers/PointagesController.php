@@ -78,6 +78,11 @@ class PointagesController extends Controller
 
    public function voirpointer( $carte_id)
 {
+             $userPointer = DB::table('user_pointers')
+        ->where('carte_id','=',$carte_id)
+        ->get();
+     
+            //dd($userPointer);
             $pointage = DB::table('user_pointers')
         ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
         ->where('carte_id','=',$carte_id)
@@ -85,7 +90,11 @@ class PointagesController extends Controller
         ->get();
      
            // dd($pointage);
+              $data=[
+            "pointage"=>$pointage,
+            "userPointer"=>$userPointer[0],
+        ];
 
-        return view('pointeur.show', compact('pointage'));
+        return view('pointeur.show', $data);
 }
 }
