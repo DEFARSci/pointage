@@ -11,6 +11,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Darriver</th>
             <th scope="col">Depart</th>
+             <th scope="col">Paiement-Retard</th>
           </tr>
         </thead>
         @if (count($pointage)==0)
@@ -26,6 +27,7 @@
             <td>{{$poitage->nom}}</td>
             <td class="{{$poitage->heurDarriver>9?text-danger:''}}">{{$poitage->heurDarriver}}</td>
             <td>{{$poitage->heurDepart}}</td>
+            <td>{{$poitage->paiementRetard}}</td>
           </tr>
           @endforeach
           
@@ -37,5 +39,13 @@
           <input type="date" name="date">
           <button type="submit">seach</button>
         </form>
+        
+
       </div>
+
+      <div class="p-3">
+  <a href="{{ route('listPiontage.pdf', $jour) }}" class="btn btn-primary">Télécharger en PDF</a>
+</div>
+
+       
 @endsection

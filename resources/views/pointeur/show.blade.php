@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
   @extends('layout.app')
   @section('content')
 

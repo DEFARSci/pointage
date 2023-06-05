@@ -20,6 +20,7 @@ class CreatePointagesTable extends Migration
             $table->string('date');
             $table->string('heurDarriver');
             $table->string('heurDepart')->nullable();
+            $table->integer('paiementRetard')->nullable();
             $table->timestamps();
         });
     }

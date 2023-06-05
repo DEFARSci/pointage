@@ -1,4 +1,16 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Envoie mail</title>
+
+</head>
+<body>
+
   @extends('layout.app')
   @section('content')
   
@@ -16,7 +28,7 @@
 
           </tr>
         </thead>
-       @if ($pointage === null || count($pointage) === 0)
+      @if ($pointage === null || count($pointage) === 0)
     <h1>Pas de pointage</h1>
 @else
     <tbody>
@@ -38,3 +50,6 @@
 
       
 @endsection
+
+</body>
+</html>

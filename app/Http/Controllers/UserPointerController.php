@@ -7,47 +7,68 @@ use App\Models\UserPointer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use PDF;
+
 
 class UserPointerController extends Controller
 {
-    public function addcartid(Request $request){
+   public function addcartid(Request $request){
 
-        $cart_id=$request->carte_id;
+    $cart_id=$request->carte_id;
 
-        $userPointer = DB::table('user_pointers')
+    $userPointer = DB::table('user_pointers')
         ->where('carte_id','=',$cart_id)
         ->get();
-        $userPointerDepart = DB::table('pointages')
+    $userPointerDepart = DB::table('pointages')
         ->where('date','=',Carbon::now()->toDateString())
         ->where('pointers_carte_id','=',$cart_id)
         ->get();
-        $userPointerDepart2 = DB::table('pointages')
+    $userPointerDepart2 = DB::table('pointages')
         ->where('pointers_carte_id','=',$cart_id)
         ->where('date','=',Carbon::now()->toDateString())
         ->get();
 
-        if (count($userPointer) !=0 && count($userPointerDepart) == 0) {
-          $pointage=new Pointages();
-          $pointage->pointers_carte_id=$userPointer[0]->carte_id;
-          $pointage->heurDarriver=Carbon::now()->toTimeString();
-          $pointage->date=Carbon::now()->toDateString();
-          $pointage->save();
+    // Vérifier si l'utilisateur a déjà une carte d'identité dans la base de données
+    if (count($userPointer) !=0 && count($userPointerDepart) == 0) {
+        // Calculer le paiement de retard en fonction de l'heure d'arrivée
+        $heureArrivee = Carbon::now()->toTimeString();
+        $heureLimite1 = Carbon::createFromTimeString('9:00:00');
+        $heureLimite2 = Carbon::createFromTimeString('9:10:00');
+        $paiementRetard = 0;
 
-          return response()->json(['status' => 'arriver']);
-        }elseif(count($userPointer) !=0 && count($userPointerDepart) != 0 && count($userPointerDepart2)!=0){
-         $pointageDerparts=Pointages::find($userPointerDepart2[0]->id);
-         $pointageDerparts->heurDepart=Carbon::now()->toTimeString();
-          $pointageDerparts->save();
-             return response()->json(['status' => $pointageDerparts]);
-        }else{
+        $heureArrivee = Carbon::parse($request->heure_arrivee);
 
-          $userPointer=new UserPointer();
-          $userPointer->carte_id=$cart_id;
-          $userPointer->save();
-          return response()->json(['status'=>'ajouter']);
-
+        if ($heureArrivee->gte($heureLimite1) && $heureArrivee->lt($heureLimite2)) {
+            $paiementRetard = 100;
+        } elseif ($heureArrivee->gte($heureLimite2)) {
+            $paiementRetard = 200;
         }
+
+        // Ajouter le pointage à la base de données
+        $pointage=new Pointages();
+        $pointage->pointers_carte_id=$userPointer[0]->carte_id;
+        $pointage->heurDarriver=$heureArrivee;
+        $pointage->date=Carbon::now()->toDateString();
+        $pointage->paiementRetard=$paiementRetard;
+        $pointage->save();
+
+        return response()->json(['status' => 'arriver']);
+    } elseif (count($userPointer) !=0 && count($userPointerDepart) != 0 && count($userPointerDepart2)!=0) {
+        // Mettre à jour le pointage de départ dans la base de données
+        $pointageDepart=Pointages::find($userPointerDepart2[0]->id);
+        $pointageDepart->heurDepart=Carbon::now()->toTimeString();
+        $pointageDepart->save();
+
+        return response()->json(['status' => $pointageDepart]);
+    } else {
+        // Ajouter la carte d'identité à la base de données
+        $userPointer=new UserPointer();
+        $userPointer->carte_id=$cart_id;
+        $userPointer->save();
+
+        return response()->json(['status'=>'ajouter']);
     }
+}
 
     public function getuser(){
     //$userPointer= UserPointer::all();
