@@ -2,11 +2,12 @@
 
 
 use App\Mail\WeelyReportMail;
+use App\Mail\WeeklyReportMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PointagesController;
 use App\Http\Controllers\UserPointerController;
-use App\Http\Controllers\PersonneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +52,8 @@ Route::put('/personnes/{id}', [PersonneController::class, 'update'])->name('pers
 Route::delete('/personnes/{id}', [PersonneController::class,'destroy'])->name('personnes.destroy');
 
 
-Route::get('/', function () {
-   Mail::to('mamejarrah99@gmail.com')
-        ->send(new  WeeklyReportMail());
-});
+// Route::get('/', function () {
+//    Mail::to('mamejarrah99@gmail.com')
+//         ->send(new  WeeklyReportMail());
+// });
 
