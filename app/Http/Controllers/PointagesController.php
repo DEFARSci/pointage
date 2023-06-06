@@ -136,7 +136,7 @@ public function generatePDF()
                     ->attachData($pdfContent, 'weekly_report.pdf');
             });
         }
-        
+        //helloworld
     return $pdf->stream("pointeur/listPointage.pdf");
 }
 
