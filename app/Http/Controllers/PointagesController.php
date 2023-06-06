@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Dompdf\Dompdf;
+use App\Models\Personne;
 use Barryvdh\DomPDF\PDF;
 use App\Models\Pointages;
 use App\Models\UserPointer;
@@ -105,13 +106,11 @@ class PointagesController extends Controller
 }
 
 
-
-
-
-
 public function generatePDF()
 
 {
+    $personns=Personne::all();
+   
     
     $date = Carbon::now()->toDateString();
     $pointage = Pointages::where('date',$date)->orderBy('heurDarriver')->get();
@@ -121,21 +120,23 @@ public function generatePDF()
             "pointage"=>$pointage,
         ];
          $content = view('emails.weekly_report', $data)->render();
+         $dimension= array(0,0,680,920);
 
     $pdf = new Dompdf();
     $pdf->loadHtml($content);
-    $pdf->setPaper('A4', 'landscape');
+    $pdf->setPaper($dimension);
     $pdf->render();
     $pdfContent = $pdf->output();
     /*  Mail::to('mamejarrah99@gmail.com')
         ->send(new  WeeklyReportMail());  */
-          Mail::send([], [], function ($message) use ($pdfContent) {
-           $message->to('mamejarrah99@gmail.com')
-            ->subject('Weekly Report')
-            ->attachData($pdfContent, 'weekly_report.pdf');
-    });
-
-
+        foreach ($personns as $person) {
+            Mail::send([], [], function ($message) use ($person, $pdfContent) {
+                $message->to($person->email)
+                    ->subject('Weekly Report')
+                    ->attachData($pdfContent, 'weekly_report.pdf');
+            });
+        }
+        
     return $pdf->stream("pointeur/listPointage.pdf");
 }
 

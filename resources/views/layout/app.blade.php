@@ -14,20 +14,21 @@
     <title>pointage</title>
 </head>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            {{-- <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a> --}}
-            <a class="nav-link text-withe" href="{{route('Pointer')}}">liste de pointage</a>
-            <a class="nav-link" href="{{route('userPointer')}}">Liste des pointeurs</a>
-            <a class="nav-link" href="{{route('indexp')}}">Liste des personnes</a>
-          </div>
-        </div>
-      </nav>
+<nav class="navbar navbar-expand-lg navbar-light " style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );">
+  <a class="navbar-brand  text-white ml-4"  href="#">Pointage-App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {{-- <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a> --}}
+      <a class="nav-link text-white" href="{{route('Pointer')}}">Liste de pointage</a>
+      <a class="nav-link  text-white" href="{{route('userPointer')}}">Liste des pointeurs</a>
+      <a class="nav-link  text-white" href="{{route('indexp')}}">Liste des personnes</a>
+    </div>
+  </div>
+</nav>
+
     <body>
      <div class="container p-5">
         @yield('content')

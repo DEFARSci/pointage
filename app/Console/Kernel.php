@@ -3,9 +3,10 @@
 namespace App\Console;
 
 use App\Mail\WeeklyReportMail;
-use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Console\Scheduling\Schedule;
+use App\Http\Controllers\PointagesController;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,14 +20,15 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
-            $personnes = \App\Personne::all(); // Obtenez la liste des utilisateurs à qui vous souhaitez envoyer l'e-mail
-            foreach ($personnes as $personne) {
-            Mail::to('mamejarrah99@gmail.com')->send(new WeeklyReportMail());
-            }
-        })->weekly()->fridays()->at('18:00'); // Configurez ici le jour et l'heure d'envoi de l'e-mail
+            $pointageController=new PointagesController();
+            $pointageController->generatePDF();
+         
+        })->dailyAt('12:52')->when(function () {
+            return date('Y-m-d') === '2023-06-05';
+        });  // Configurez ici le jour et l'heure d'envoi de l'e-mail
        /*  $schedule->command('email:weekly-report')->weeklyOn(5, '18:00'); */
        
-    $schedule->command('email:send-weekly-report')->fridays()->at('20:00');
+  //  $schedule->command('email:send-weekly-report')->fridays()->at('20:00');
 
 
 }
