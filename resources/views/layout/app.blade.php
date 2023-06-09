@@ -14,7 +14,7 @@
     <title>pointage</title>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light " style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );">
+<nav class="navbar navbar-expand-lg navbar-light " style="background: linear-gradient(to right,#ea641b , #ea641b );">
   <a class="navbar-brand  text-white ml-4"  href="#">Pointage-App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

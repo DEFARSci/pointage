@@ -6,7 +6,7 @@
 
    <div class="table-responsive">
     <table class="table table-bordered p-3">
-      <thead class=""style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );">
+      <thead class=""style="background: linear-gradient(to right, #84addb ,  #84addb );">
           <tr>
             <th scope="col" class="text-white">#</th>
             <th scope="col"class="text-white">Prenom</th>
@@ -52,7 +52,7 @@
           
               <input type="date" name="date" class="form-control col-2 mb-2">
           
-            <button type="submit" style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );"class="btn text-white">seach</button>
+            <button type="submit" style="background: linear-gradient(to right, #84addb ,  #84addb );"class="btn text-white">seach</button>
         
         </form>
         
@@ -60,7 +60,7 @@
       </div>
 
       <div class="p-3">
-  <a style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );" href="{{ route('listPiontage.pdf', $jour) }}" class="btn text-white">Télécharger en PDF</a>
+  <a style="background: linear-gradient(to right, #84addb ,  #84addb );" href="{{ route('listPiontage.pdf', $jour) }}" class="btn text-white">Télécharger en PDF</a>
 </div>
 
        
