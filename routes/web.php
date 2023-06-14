@@ -20,9 +20,9 @@ use App\Http\Controllers\UserPointerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('userPointer',[PointagesController::class,'index'])->name('userPointer');
+Route::get('/',[PointagesController::class,'index'])->name('userPointer');
 Route::get('getuserPointer/{id}',[PointagesController::class,'getuserpointer'])->name('getuserPointer');
 Route::put('getuserPointer/{id}',[PointagesController::class,'saveuserpointer'])->name('saveuserPointer');
 Route::get('voirPointer/{carte_id}' , [PointagesController::class, 'voirpointer'])->name('voirPointer');
