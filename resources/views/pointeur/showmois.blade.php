@@ -14,29 +14,8 @@
                 <div  class="  p-3 " id="piechart" style="width: 800px; height: 400px;"></div>
 
               </div>
-              <form action="{{ route('voirPointermois', ['carte_id'=>$userPointer->carte_id ]) }}" method="get">
-                <div class="d-flex justify-content-end ">
-                  <select name="mois" class=" justify-content-cente mr-1">
-                    <option value="1">Janvier</option>
-                    <option value="2">Février</option>
-                    <option value="3">Mars</option>
-                    <option value="4">Avril</option>
-                    <option value="5">Mai</option>
-                    <option value="6">Juin</option>
-                    <option value="7">Juillet</option>
-                    <option value="8">Août</option>
-                    <option value="9">Septembre</option>
-                    <option value="10">Octobre</option>
-                    <option value="11">Novembre</option>
-                    <option value="12">Décembre</option>
-                  </select>
-             <button type="submit" class="btn  text-white" style="background: linear-gradient(to right,#84addb ,  #84addb );"
-             > <i class="fas fa-search"></i></button>
-                  
-                      </div>
-                
-              </form>
-            
+    
+            <h1 class="m-3 text-white text-center col-4 " style="background-color: #84addb ">{{$mois}}</h1>
   <table class="table table-sm ">
      <thead > 
 
@@ -53,8 +32,9 @@
     @else
     
              @foreach ($pointage as $pointeur )
-             
-
+          @if ()
+              
+          @endif
              <tr>
 
 

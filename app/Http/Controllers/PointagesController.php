@@ -106,9 +106,9 @@ class PointagesController extends Controller
        // dd($date1);
         
         $dateNow=Carbon::now();
-        if ($dateNow->isLastOfMonth()) {
-            # code...l
-        }
+        // if ($dateNow->isLastOfMonth()) {
+        //     # code...l
+        // }
        //dd($dateNow);
        $interval=new DateInterval('P1D');
 
@@ -135,13 +135,13 @@ foreach ($periode as $jour) {
        // dd($totalHours);
 
         foreach($pointage as $point){
-            if(Carbon::parse($point->date)->month==$dateNow->month){
+            //if(Carbon::parse($point->date)->month==$dateNow->month){
                 $date=new DateTime($point->heurDarriver);
                 //  dd($date->format('H:i:s'));
                   $rs =(abs(strtotime("18:00:00")-strtotime($date->format('H:i:s')))/3600)*60;
                 //  dd($rs);
                   $specificHours += $rs;
-            };
+            //};
           
         }
    // dd($specificHours);

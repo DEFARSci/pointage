@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PointagesController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserPointerController;
 
 /*
@@ -36,6 +37,8 @@ Route::get('getuserPointer/{id}',[PointagesController::class,'getuserpointer'])-
 Route::put('getuserPointer/{id}',[PointagesController::class,'saveuserpointer'])->name('saveuserPointer');
 Route::get('voirPointer/{carte_id}' , [PointagesController::class, 'voirpointer'])->name('voirPointer');
 Route::get('/pointage/{jour}/pdf', [PointagesController::class, 'generatePDF'])->name('listPiontage.pdf');
+// show pointer par mois
+Route::get('voirPointermois/{carte_id}' , [SearchController::class, 'voirpointermois'])->name('voirPointermois');
 
 
 
