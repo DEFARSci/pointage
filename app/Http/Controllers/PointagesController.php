@@ -88,6 +88,7 @@ class PointagesController extends Controller
 
    public function voirpointer( $carte_id)
 {
+    
              $userPointer = DB::table('user_pointers')
         ->where('carte_id','=',$carte_id)
         ->get();
@@ -135,11 +136,20 @@ foreach ($periode as $jour) {
        // dd($totalHours);
 
         foreach($pointage as $point){
+            
             //if(Carbon::parse($point->date)->month==$dateNow->month){
-                $date=new DateTime($point->heurDarriver);
+                $datearriver=new DateTime($point->heurDarriver);
+                $dateDepart=new DateTime($point->heurDepart);
+                
                 //  dd($date->format('H:i:s'));
-                  $rs =(abs(strtotime("18:00:00")-strtotime($date->format('H:i:s')))/3600)*60;
-                //  dd($rs);
+                if ($point->heurDepart==null) {
+                    $rs =(abs(strtotime("18:00:00")-strtotime($datearriver->format('H:i:s')))/3600)*60;
+
+                }else{
+
+                    $rs =(abs(strtotime($dateDepart->format('H:i:s'))-strtotime($datearriver->format('H:i:s')))/3600)*60;
+                }
+                //dd($rs);
                   $specificHours += $rs;
             //};
           

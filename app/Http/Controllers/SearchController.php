@@ -15,9 +15,10 @@ class SearchController extends Controller
 {
     public function voirpointermois($carte_id, Request $request)
     {
-        setlocale(LC_TIME, 'fr_FR');
-        $mois = date('F', mktime(0, 0, 0, $request->mois, 1));
-       // dd($mois);
+    //  setlocale(LC_TIME, 'fr_FR');
+        // $mois = date('F', mktime(0, 0, 0, $request->mois, 1));
+        $mois=DateTime::createFromFormat('!m', $request->mois)->format('F');
+        //dd($mois);
                  $userPointer = DB::table('user_pointers')
             ->where('carte_id','=',$carte_id)
             ->get();
@@ -66,11 +67,18 @@ class SearchController extends Controller
     
             foreach($pointage as $point){
                // dd(Carbon::parse($point->date)->month);
-                if(Carbon::parse($point->date)->month==$dateNow->month){
-                    $date=new DateTime($point->heurDarriver);
-                    //  dd($date->format('H:i:s'));
-                      $rs =(abs(strtotime("18:00:00")-strtotime($date->format('H:i:s')))/3600)*60;
-                    //  dd($rs);
+                if(Carbon::parse($point->date)->month==$request->mois){
+                    $dateArriver=new DateTime($point->heurDarriver);
+                    $dateDepart=new DateTime($point->heurDepart);
+
+                    if ($point->heurDepart==null) {
+                        $rs =(abs(strtotime("18:00:00")-strtotime($dateArriver->format('H:i:s')))/3600)*60;
+    
+                    }else{
+    
+                        $rs =(abs(strtotime($dateDepart->format('H:i:s'))-strtotime($dateArriver->format('H:i:s')))/3600)*60;
+                    }
+                    //dd($rs);
                       $specificHours += $rs;
                 };
               
@@ -83,6 +91,7 @@ class SearchController extends Controller
                 "userPointer"=>$userPointer[0],
                 "percentage"=>$percentage,
                 "mois"=>$mois,
+                "testmois"=>$request->mois,
             ];
         }else{
             $data=[

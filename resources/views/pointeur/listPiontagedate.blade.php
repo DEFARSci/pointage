@@ -3,8 +3,9 @@
   @section('content')
   
   <h1 class="p-3" > pointage du : {{$jour}}</h1>
-    <table class="table p-3">
-        <thead>
+    <table class="table table-bordered p-3">
+      <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
+
           <tr>
             <th scope="col">#</th>
             <th scope="col">Prenom</th>

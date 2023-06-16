@@ -4,7 +4,17 @@
 
   @extends('layout.app')
   @section('content')
-  <div class="table-responsive">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div  class="d-flex justify-content-center align-items-center  col-8 mb-3" style="background:#84addb;">
+        <h1 class=" text-white">Liste des employés de la RDL</h1>
+      </div>
+    </div>
+
+  </div>
+ 
+  <div class="table-responsive" style="max-height: 700px;overflow-y: scroll;">
     <table class="table table-bordered p-3">
       <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
           <tr>
@@ -34,4 +44,5 @@
         </tbody>
       </table>
   </div>
+ 
 @endsection

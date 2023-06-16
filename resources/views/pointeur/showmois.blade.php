@@ -4,18 +4,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <div class="ml-6">
+    <div class="container d-flex  justify-content-center">
+      <h1 class="m-5 text-white text-center col-4 " style="background-color: #84addb ">{{$mois}}</h1>
+      </div>
     
            
             <h3>{{ $userPointer->prenom}}&nbsp{{ $userPointer->nom }} </h3>
             <h6><b >Carte_ID : </b>{{ $userPointer->carte_id }}</h6>
             <h6><b >Email : </b>{{ $userPointer->email }}</h6>
-            <h6><b>Phone : </b>{{ $userPointer->phone }}</h6>   
+            <h6><b>Phone : </b>{{ $userPointer->phone }}</h6> 
+           
               <div class="container d-flex  justify-content-center">
                 <div  class="  p-3 " id="piechart" style="width: 800px; height: 400px;"></div>
 
               </div>
+              
     
-            <h1 class="m-3 text-white text-center col-4 " style="background-color: #84addb ">{{$mois}}</h1>
   <table class="table table-sm ">
      <thead > 
 
@@ -30,20 +34,24 @@
     <h1 class="bg-danger">La personne n'a pas encore pointer</h1>
         
     @else
-    
+    @if ($percentage==0)
+      <h3>Pas de pointage pour le mois de  {{$mois}} </h3>
+
+    @endif
              @foreach ($pointage as $pointeur )
-          @if ()
+           @if (date('n',strtotime( $pointeur->date))==$testmois)
               
-          @endif
+        
              <tr>
 
 
-            <td> {{ $pointeur->date}} </td>
+            <td> {{$pointeur->date}} </td>
          <td> {{ $pointeur-> heurDarriver}}</td>
         <td> {{ $pointeur->heurDepart}}</td>
 
         </tr>
-
+        
+        @endif
     @endforeach
     
     </tbody>

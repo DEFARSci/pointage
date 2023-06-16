@@ -36,13 +36,14 @@
                       </div>
                 
               </form>
-            
-  <table class="table table-sm ">
-     <thead > 
+              <div class="table-responsive mt-2">
+              <table class="table table-bordered p-3">
+    <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
 
-           <th scope="col">Date</th>
-            <th scope="col">Arrive</th>
-            <th scope="col">Depart</th>
+
+           <th scope="col"class=" text-white">Date</th>
+            <th scope="col"class=" text-white">Arrive</th>
+            <th scope="col"class=" text-white">Depart</th>
     
   </thead>
 
@@ -70,7 +71,7 @@
 </table>
 @endif
     </div > 
-    
+  </div>
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
             google.charts.load('current', {'packages':['corechart']});
@@ -90,7 +91,7 @@ var data = google.visualization.arrayToDataTable([
       
               var options = {
                 // title: 'My Daily Activities'
-                title: 'Taux de présence',
+               // title: 'Taux de présence',
                 titleTextStyle: {
                      color: 'black',
                      fontName: 'Arial',
