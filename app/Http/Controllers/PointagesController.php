@@ -13,6 +13,7 @@ use App\Models\UserPointer;
 use Illuminate\Http\Request;
 use App\Mail\WeeklyReportMail;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
@@ -21,9 +22,13 @@ use Illuminate\Support\Facades\View;
 class PointagesController extends Controller
 {
     public function index(){
+        $user='';
         $userPointeur=UserPointer::all();
+        if (Auth::check()) {
+            $user=Auth::user()->name;
+        }
 
-        return View('pointeur.index',compact('userPointeur'));
+        return View('pointeur.index',compact('userPointeur','user'));
     }
 
     public function listPiontage(){

@@ -88,6 +88,23 @@ class UserPointerController extends Controller
       return response()->json($userPointer);
     }
 
+    public function showuser($carte_id){
+        try {
+       $pointage = DB::table('user_pointers')
+       ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
+       ->where('date','=',Carbon::now()->toDateString())
+       ->where('user_pointers.carte_id','=',$carte_id)
+       ->select('user_pointers.*', 'pointages.*')
+       ->get();
+         return $pointage[0];
+         
+       } catch (\Throwable $th) {
+         //throw $th;
+         return null;
+       }
+       
+       }
+
 
 
 }

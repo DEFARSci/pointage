@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('userPointer/',[UserPointerController::class,'addcartid'])->name('userPointer');
 Route::get('userPointers/',[UserPointerController::class,'getuser'])->name('getuserPointer');
-
+Route::get('userPointers/{carte_id}',[UserPointerController::class,'showuser'])->name('showuserPointer');

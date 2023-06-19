@@ -32,8 +32,8 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/',[PointagesController::class,'index'])->name('userPointer');
-Route::get('getuserPointer/{id}',[PointagesController::class,'getuserpointer'])->name('getuserPointer');
+Route::get('/pointeur',[PointagesController::class,'index'])->name('userPointer');
+Route::get('getuserPointer/{id}',[PointagesController::class,'getuserpointer'])->middleware(['auth'])->name('getuserPointer');
 Route::put('getuserPointer/{id}',[PointagesController::class,'saveuserpointer'])->name('saveuserPointer');
 Route::get('voirPointer/{carte_id}' , [PointagesController::class, 'voirpointer'])->name('voirPointer');
 Route::get('/pointage/{jour}/pdf', [PointagesController::class, 'generatePDF'])->name('listPiontage.pdf');
@@ -44,7 +44,7 @@ Route::get('voirPointermois/{carte_id}' , [SearchController::class, 'voirpointer
 
 
 
-Route::get('Pointage',[PointagesController::class,'listPiontage'])->name('Pointer');
+Route::get('/',[PointagesController::class,'listPiontage'])->name('Pointer');
 Route::get('Pointagedate',[PointagesController::class,'Piontagedate'])->name('Pointerdate');
 
 Route::get('personne',[PersonneController::class,'indexp'])->name('indexp');

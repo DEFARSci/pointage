@@ -13,7 +13,6 @@
     </div>
 
   </div>
- 
   <div class="table-responsive" style="max-height: 700px;overflow-y: scroll;">
     <table class="table table-bordered p-3">
       <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
