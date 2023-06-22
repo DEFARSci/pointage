@@ -12,6 +12,7 @@
 <h1>Carte ID N° : {{$pointeur->carte_id}}</h1>
 
 
+
 <form method="POST" action="{{route('saveuserPointer',['id'=>$pointeur->id])}}" >
     @csrf
   @method("PUT")
@@ -47,6 +48,6 @@
         @enderror 
     </div>
    
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn text-white" style="background: #84addb;">Submit</button>
   </form>
 @endsection

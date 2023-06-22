@@ -17,7 +17,7 @@
 <body>
 
   <h1 class="p-3" > pointage du : {{$jour}}</h1>
-    <table class="table p-3" "style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );">
+    <table class="table p-3" style="background: linear-gradient(to right, #3A5F85 ,  #506C87 );">
         <thead>
           <tr>
             <th scope="col">#</th>

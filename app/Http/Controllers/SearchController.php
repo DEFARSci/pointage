@@ -62,6 +62,7 @@ class SearchController extends Controller
             $totalHours = ((abs(strtotime("18:00:00")-strtotime("9:00:00"))/3600)*60)*$nombreDeJours;
            // dd($totalHours); // Nombre total d'heures
             $specificHours = 0; // Nombre d'heures spécifique à représenter
+            $total=0;
     
            // dd($totalHours);
     
@@ -80,6 +81,7 @@ class SearchController extends Controller
                     }
                     //dd($rs);
                       $specificHours += $rs;
+                      $total +=$point->paiementRetard;
                 };
               
             }
@@ -92,6 +94,7 @@ class SearchController extends Controller
                 "percentage"=>$percentage,
                 "mois"=>$mois,
                 "testmois"=>$request->mois,
+                "total"=>$total,
             ];
         }else{
             $data=[
@@ -99,6 +102,7 @@ class SearchController extends Controller
                 "userPointer"=>$userPointer[0],
                 "percentage"=>null,
                 "mois"=>$mois,
+                "total"=>null,
             ];
         }
             return view('pointeur.showmois', $data);

@@ -9,7 +9,7 @@
   </div>
   
 
-   <div class="table-responsive" style="max-height: 700px;overflow-y: scroll;">
+   <div class="table-responsive" style="max-height: 500px;overflow-y: scroll;">
     <table class="table table-bordered p-3">
       <thead class=""style="background: linear-gradient(to right, #84addb ,  #84addb );">
           <tr>
@@ -32,15 +32,16 @@
             <th scope="row">{{$poitage->id}}</th>
             <td>{{$poitage->prenom}}</td>
             <td>{{$poitage->nom}}</td>
-            @if (strtotime($poitage->heurDarriver)<strtotime("9:00:00"))
-            <td >{{$poitage->heurDarriver}}</td>
-            @endif
-             @if (strtotime("9:01:00")<<strtotime($poitage->heurDarriver)||strtotime($poitage->heurDarriver)<<strtotime("9:10:00")) 
-             <td class="bg-warning">{{$poitage->heurDarriver}}</td>
-             @endif
-             @if (strtotime($poitage->heurDarriver)>strtotime("9:11:00"))
-             <td class="bg-danger">{{$poitage->heurDarriver}}</td>
-             @endif
+            @if (strtotime($poitage->heurDarriver) < strtotime("9:00:00"))
+    <td>{{$poitage->heurDarriver}}</td>
+@endif
+@if (strtotime("9:01:00") < strtotime($poitage->heurDarriver) && strtotime($poitage->heurDarriver) <= strtotime("9:10:59"))
+    <td class="bg-warning">{{$poitage->heurDarriver}}</td>
+@endif
+@if (strtotime($poitage->heurDarriver) > strtotime("9:11:00"))
+    <td class="bg-danger">{{$poitage->heurDarriver}}</td>
+@endif
+
             
           
             <td >{{$poitage->heurDepart}}</td>
@@ -52,20 +53,35 @@
         @endif
       </table>
    </div>
-      <div>
-        <form action="{{route('Pointerdate')}}" method="get" class="row col-2 pb-1" >
-          
-              <input type="date" name="date" class="form-control col-2 mb-2">
-          
-            <button type="submit" style="background: linear-gradient(to right, #84addb ,  #84addb );"class="btn text-white">seach</button>
-        
-        </form>
-        
+   {{-- <div class="form-group">
+    <form action="{{route('Pointerdate')}}" method="get" class="form-inline col-2 pb-1 d-flex">
+      <div class="row">
 
+      
+      <div class="form-group">
+        <input type="date" name="date" class="form-control mb-2">
+        </div> 
+        <div class="form-group">
+        <button type="submit" style="background: linear-gradient(to right, #84addb ,  #84addb );" class="btn text-white">Search</button>
+        </div>
       </div>
+      </form>
+</div> --}}
+
+{{-- recherche par date --}}
+<form class="row g-3" action="{{route('Pointerdate')}}" method="get">
+  <div class="col-auto">
+    <label for="inputPassword2" class="visually-hidden">Password</label>
+    <input type="date" name="date" class="form-control mb-2">
+  </div>
+  <div class="col-auto">
+    <button type="submit" style="background: linear-gradient(to right, #84addb ,  #84addb );" class="btn text-white">Search</button>
+    
+  </div>
+</form>
 
       <div class="p-3">
-  <a style="background: linear-gradient(to right, #84addb ,  #84addb );" href="{{ route('listPiontage.pdf', $jour) }}" class="btn text-white">Télécharger en PDF</a>
+  <a style="background:#84addb;" href="{{ route('listPiontage.pdf', $jour) }}" class="btn text-white">Télécharger en PDF</a>
 </div>
 
        

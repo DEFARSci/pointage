@@ -33,7 +33,7 @@ class UserPointerController extends Controller
         // Calculer le paiement de retard en fonction de l'heure d'arrivée
         $heureArrivee = Carbon::now()->toTimeString();
         $heureLimite1 = Carbon::createFromTimeString('9:00:00');
-        $heureLimite2 = Carbon::createFromTimeString('9:10:00');
+        $heureLimite2 = Carbon::createFromTimeString('9:10:59');
         $paiementRetard = 0;
 
         $heureArrivee = Carbon::parse($request->heure_arrivee);
@@ -47,7 +47,7 @@ class UserPointerController extends Controller
         // Ajouter le pointage à la base de données
         $pointage=new Pointages();
         $pointage->pointers_carte_id=$userPointer[0]->carte_id;
-        $pointage->heurDarriver=$heureArrivee;
+        $pointage->heurDarriver=Carbon::now()->toTimeString();
         $pointage->date=Carbon::now()->toDateString();
         $pointage->paiementRetard=$paiementRetard;
         $pointage->save();
@@ -92,10 +92,12 @@ class UserPointerController extends Controller
         try {
        $pointage = DB::table('user_pointers')
        ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
-       ->where('date','=',Carbon::now()->toDateString())
+       ->where('pointages.date','=',Carbon::now()->toDateString())
        ->where('user_pointers.carte_id','=',$carte_id)
        ->select('user_pointers.*', 'pointages.*')
        ->get();
+
+         //dd($pointage);
          return $pointage[0];
          
        } catch (\Throwable $th) {
