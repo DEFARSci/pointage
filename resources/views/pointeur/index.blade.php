@@ -13,7 +13,8 @@
     </div>
 
   </div>
-  <div class="table-responsive" style="max-height: 600px;overflow-y: scroll;">
+  {{-- style="max-height: 600px;overflow-y: scroll;" --}}
+  <div class="table-responsive" >
     <table class="table table-bordered p-3">
       <thead class=""style="background:#84addb;">
           <tr>

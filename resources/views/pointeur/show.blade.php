@@ -83,13 +83,20 @@
     </div > 
   </div>
   <div class="row">
-    <div class="col-md-2"></div>
-    <div  class="d-flex justify-content-center align-items-center  col-5 mb-3" >
-      
+    <div class="col-md-2">
+      <button type="button" class="btn  text-white" style="background: #84addb;" onclick="window.location.href='{{route('paiement',['carte_id'=>$userPointer->carte_id])}}'">paiement</button>
     </div>
     <div class="col-md-5 d-flex justify-content-end ">
-      <h3 class="p-3 text-white" style="background:#84addb;"> Montant Total :{{$total}} fr</h3>
+      <h5 class="p-3 text-white" style="background:#84addb;"> Montant verser :{{$totalpaiement}} fr</h5>
+
     </div>
+    <div class="col-md-5 d-flex justify-content-end ">
+      <h5 class="p-3 text-white" style="background:#84addb;"> Dette Totale :{{$total-$totalpaiement}} fr</h5>
+      
+
+    </div>
+    
+  
   </div>
   
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

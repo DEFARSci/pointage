@@ -23,7 +23,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="navbar-nav mr-3">
       @auth
       <div class="dropdown">
         @auth 
@@ -49,9 +49,9 @@
       
     @endauth
       {{-- <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a> --}}
-      <a class="nav-link text-white" href="{{route('Pointer')}}">Liste de pointage</a>
-      <a class="nav-link  text-white" href="{{route('userPointer')}}">Liste des pointeurs</a>
-      <a class="nav-link  text-white" href="{{route('indexp')}}">Liste des personnes</a>
+      <a class="nav-link text-white" href="{{route('Pointer')}}">Pointage</a>
+      <a class="nav-link  text-white" href="{{route('userPointer')}}">Tableau de Bord</a>
+      <a class="nav-link  text-white" href="{{route('indexp')}}">Rapport</a>
     </div>
   </div>
   

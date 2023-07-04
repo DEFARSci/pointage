@@ -117,7 +117,18 @@ class PointagesController extends Controller
             ->where('carte_id', '=', $carte_id)
             ->select('user_pointers.*', 'pointages.*')
             ->get();
-        // $total=$pointage->sum('paiementRetard');
+
+            //recupere Paiement
+
+            $paiement = DB::table('user_pointers')
+            ->join('paiements', 'user_pointers.carte_id', '=', 'paiements.pointers_carte_id')
+            ->where('carte_id', '=', $carte_id)
+            ->select('user_pointers.*', 'paiements.*')
+            ->get();
+
+            
+           $totalpaiement=$paiement->sum('depot');
+          // dd($totalaiement);
         // dd($total);  
 
         if ($pointage->has(0)) {
@@ -183,6 +194,7 @@ class PointagesController extends Controller
                 "userPointer" => $userPointer[0],
                 "percentage" => $percentage,
                 "total" => $total,
+                "totalpaiement" => $totalpaiement,
             ];
         } else {
             $data = [
@@ -190,6 +202,8 @@ class PointagesController extends Controller
                 "userPointer" => $userPointer[0],
                 "percentage" => null,
                 "total" => null,
+                "totalpaiement"=>null,
+                
             ];
         }
         return view('pointeur.show', $data);

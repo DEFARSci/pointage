@@ -5,9 +5,10 @@ use App\Mail\WeelyReportMail;
 use App\Mail\WeeklyReportMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PointagesController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserPointerController;
 
 /*
@@ -54,6 +55,10 @@ Route::get('/personnes/{id}/edit', [PersonneController::class, 'edit'])->name('p
 Route::put('/personnes/{id}', [PersonneController::class, 'update'])->name('personnes.update');
 Route::delete('/personnes/{id}', [PersonneController::class,'destroy'])->name('personnes.destroy');
 
+//paiement
+
+Route::get('/paiement/{carte_id}', [PaiementController::class, 'doPaiement'])->name('paiement');
+Route::post('/paiment', [PaiementController::class, 'postpaiment'])->name('postpaiment');
 
 // Route::get('/', function () {
 //    Mail::to('mamejarrah99@gmail.com')
