@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paiement;
 use Carbon\Carbon;
+use App\Models\Paiement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaiementController extends Controller
 {
     public function doPaiement($carte_id){
 
-        return view('pointeur.paiement',compact('carte_id'));
+        $paiements = DB::table('paiements')
+        ->where('pointers_carte_id', '=', $carte_id)
+        ->select('paiements.*')
+        ->get();
+        $pointeur=DB::table('user_pointers')
+        ->where('carte_id', '=', $carte_id)
+        ->select('user_pointers.*')
+        ->get();
+       
+    $data=[
+        "paiements" => $paiements,
+        "carte_id" => $carte_id,
+        "pointeur" => $pointeur[0],
+    ];
+
+        return view('pointeur.paiement', $data);
 
     }
    

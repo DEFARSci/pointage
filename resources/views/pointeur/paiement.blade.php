@@ -9,7 +9,9 @@
 
 @endif
 
-<h1>Carte ID N° : {{$carte_id}}</h1>
+<h3>Carte ID N° : {{$carte_id}}</h3>
+
+<h1>{{$pointeur->prenom}} {{$pointeur->nom}}</h1>
 
 
 
@@ -28,4 +30,24 @@
     </div>
     <button type="submit" class="btn text-white" style="background: #84addb;">Submit</button>
   </form>
+  <div class="table-responsive pt-3" >
+    <table class="table table-bordered p-3">
+      <thead class=""style="background:#84addb;">
+          <tr>
+            <th scope="col" class=" text-white">Date</th>
+            <th scope="col" class=" text-white">Montant</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($paiements as $paiement) 
+          <tr>
+            <td>{{$paiement->date}}</td>
+            <td>{{$paiement->depot}}</td>
+
+          </tr>
+          @endforeach
+
+        </tbody>
+      </table>
+  </div>
 @endsection
