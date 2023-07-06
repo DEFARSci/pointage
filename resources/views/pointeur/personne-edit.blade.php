@@ -40,13 +40,13 @@
         @enderror  
     </div>
       <div class="form-group">
-        <label for="phone">Role</label>
-        <input type="phone" class="form-control" id="role" name="role"  value="{{old('role',$personne->role)}}" >
-        @error('phone')
+        <label for="role">Role</label>
+        <input type="text" class="form-control" id="role" name="role"  value="{{old('role',$personne->role)}}" >
+        @error('role')
         <div class="text-danger">{{ $message }}</div>
         @enderror 
     </div>
    
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn text-white" style="background:#84addb;">Modifier</button>
   </form>
 @endsection

@@ -74,6 +74,8 @@ class PointagesController extends Controller
             'nom' => ['required', 'max:20'],
             'prenom' => ['required'],
             'phone' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+
         ]);
 
 

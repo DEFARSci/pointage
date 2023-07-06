@@ -43,10 +43,13 @@ class PersonneController extends Controller
      */
     public function store(Request $request ,personne $personne)
     {
-       
-         $personne = new Personne;
-
-
+        $request->validate([
+            'nom' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'prenom' => ['required', 'confirmed', 'string', 'max:255'],
+            'role' => ['required'],
+        ]);
+        $personne = new Personne;
         $personne->nom=$request->nom;
         $personne->prenom=$request->prenom;
         $personne->email=$request->email;
@@ -97,10 +100,16 @@ class PersonneController extends Controller
      */
     public function update(Request $request, personne $personne,$id)
     {
+        $request->validate([
+            'nom' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'prenom' => ['required', 'string', 'max:255'],
+            'role' => ['required'],
+        ]);
         $personne = Personne::find($id);
     // Mettez à jour les champs de la personne en utilisant les données du formulaire ($request)
     
- $personne->nom=$request->nom;
+        $personne->nom=$request->nom;
         $personne->prenom=$request->prenom;
         $personne->email=$request->email;
         $personne->role=$request->role;

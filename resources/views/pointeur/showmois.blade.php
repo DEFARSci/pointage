@@ -17,15 +17,36 @@
             <div class="container  justify-content-center">
               <div class="row">
 
-                <div class="  col-4 d-flex align-items-center justify-content-end "><h4 class="m-0 text-decoration-underline">Diagramme de présence<br> du mois de {{$mois}}</h4></div>
+                <div class="  col-3 d-flex align-items-center justify-content-end "><h6 class="m-0 text-decoration-underline">Récapitulatif de présence en diagramme<br> du mois de {{$mois}}</h6></div>
                 <div  class="" id="piechart" style="width: 800px; height: 400px;"></div>
               </div>
 
             </div>
+            <form action="{{ route('voirPointermois', ['carte_id'=>$userPointer->carte_id ]) }}" method="get">
+              <div class="d-flex justify-content-end ">
+                <select name="mois" class=" justify-content-cente mr-1">
+                  <option value="1">Janvier</option>
+                  <option value="2">Février</option>
+                  <option value="3">Mars</option>
+                  <option value="4">Avril</option>
+                  <option value="5">Mai</option>
+                  <option value="6">Juin</option>
+                  <option value="7">Juillet</option>
+                  <option value="8">Août</option>
+                  <option value="9">Septembre</option>
+                  <option value="10">Octobre</option>
+                  <option value="11">Novembre</option>
+                  <option value="12">Décembre</option>
+                </select>
+           <button type="submit" class="btn  text-white" style="background: linear-gradient(to right,#84addb ,  #84addb );"
+           > <i class="fas fa-search"></i></button>
+                
+                    </div>
               
+            </form>
     
-            <div class="table-responsive" style="max-height: 500px;overflow-y: scroll;">
-              <table class="table table-bordered p-3">
+            <div class="table-responsive" >
+              <table class="table table-bordered p-3 mt-3">
               <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
 
            <th scope="col" class=" text-white">Date</th>
@@ -73,7 +94,7 @@
         
       </div>
       <div class="col-md-5 d-flex justify-content-end ">
-        <h3 class="p-3 text-white" style="background:#84addb;"> Montant Total :{{$total}}</h3>
+        <h6 class="p-3 text-white" style="background:#84addb;"> Montant Total :{{$total}}</h6>
   
       </div>
     </div>

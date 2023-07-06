@@ -9,11 +9,10 @@
   </div>
   
 
-   <div class="table-responsive" style="max-height: 500px;overflow-y: scroll;">
+   <div class="table-responsive">
     <table class="table table-bordered p-3">
       <thead class=""style="background: linear-gradient(to right, #84addb ,  #84addb );">
           <tr>
-            <th scope="col" class="text-white">#</th>
             <th scope="col"class="text-white">Prenom</th>
             <th scope="col"class="text-white">Nom</th>
             <th scope="col"class="text-white">Darriver</th>
@@ -29,7 +28,6 @@
             @foreach ($pointage as $poitage )
     
           <tr>
-            <th scope="row">{{$poitage->id}}</th>
             <td>{{$poitage->prenom}}</td>
             <td>{{$poitage->nom}}</td>
             @if (strtotime($poitage->heurDarriver) < strtotime("9:00:00"))
@@ -71,18 +69,23 @@
 {{-- recherche par date --}}
 <form class="row g-3" action="{{route('Pointerdate')}}" method="get">
   <div class="col-auto">
-    <label for="inputPassword2" class="visually-hidden">Password</label>
-    <input type="date" name="date" class="form-control mb-2">
+    
+    <input type="date" name="date" class="form-control mb-2" id="date" required>
   </div>
   <div class="col-auto">
     <button type="submit" style="background: linear-gradient(to right, #84addb ,  #84addb );" class="btn text-white">Search</button>
     
   </div>
+  
 </form>
-
-      <div class="p-3">
+@auth
+@if(auth()->user()->name=='admin')
+    
+<div class="p-3">
   <a style="background:#84addb;" href="{{ route('listPiontage.pdf', $jour) }}" class="btn text-white">Télécharger en PDF</a>
 </div>
+@endif
 
-       
+@endauth
+
 @endsection

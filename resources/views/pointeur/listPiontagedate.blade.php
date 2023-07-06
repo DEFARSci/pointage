@@ -8,7 +8,7 @@
       <h1 class="p-3 text-white" >Liste de pointage du : {{$jour}}</h1>
     </div>
   </div>
-  <div class="table-responsive" style="max-height: 500px;overflow-y: scroll;">
+  <div class="table-responsive" >
     <table class="table table-bordered p-3">
       <thead class=""style="background: linear-gradient(to right, #84addb ,  #84addb );">
           <tr>

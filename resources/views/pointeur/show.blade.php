@@ -13,7 +13,7 @@
               <div class="container  justify-content-center">
                 <div class="row">
 
-                  <div class="  col-4 d-flex align-items-center justify-content-end "><h4 class="m-0 text-decoration-underline">Diagramme de présence</h4></div>
+                  <div class="  col-3 d-flex align-items-center justify-content-end "><h6 class="m-0 text-decoration-underline">Récapitulatif de présence en diagramme</h6></div>
                   <div  class="" id="piechart" style="width: 800px; height: 400px;"></div>
                 </div>
 
@@ -42,7 +42,7 @@
               </form>
               <div class="table-responsive mt-2">
 
-               <div class="table-responsive" style="max-height: 500px;overflow-y: scroll;">
+               <div class="table-responsive" >
     <table class="table table-bordered p-3">
     <thead class=""style="background: linear-gradient(to right, #84addb , #84addb );">
 
@@ -87,11 +87,11 @@
       <button type="button" class="btn  text-white" style="background: #84addb;" onclick="window.location.href='{{route('paiement',['carte_id'=>$userPointer->carte_id])}}'">paiement</button>
     </div>
     <div class="col-md-5 d-flex justify-content-end ">
-      <h5 class="p-3 text-white" style="background:#84addb;"> Montant verser :{{$totalpaiement}} fr</h5>
+      <h6 class="p-3 text-white" style="background:#84addb;"> Montant verser :{{$totalpaiement}} fr</h6>
 
     </div>
     <div class="col-md-5 d-flex justify-content-end ">
-      <h5 class="p-3 text-white" style="background:#84addb;"> Dette Totale :{{$total-$totalpaiement}} fr</h5>
+      <h6 class="p-3 text-white " style="background:#84addb;"> Dette Totale :{{$total-$totalpaiement}} fr</h6>
       
 
     </div>

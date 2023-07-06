@@ -3,12 +3,17 @@
   @extends('layout.app')
   @section('content')
 
-
-<div class="d-flex justify-content-end">
-    <div class="col-md-5 offset-md-7 col-lg-4 offset-lg-8">
-        <a href="{{ route('personne-create') }}" class="btn text-white" style="background: linear-gradient(to right, #84addb , #84addb);">Ajouter une personne</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div  class="d-flex justify-content-center align-items-center  col-8 mb-3" style="background:#84addb;">
+        <h1 class=" text-white">Liste des destinataires du rapport</h1>
+      </div>
     </div>
-</div>
+
+  </div>
+
+
 
 &nbsp
 
@@ -51,6 +56,11 @@
             @endforeach
         </tbody>
     </table>
+</div>
+<div class="d-flex justify-content-end">
+    <div class="">
+        <a href="{{ route('personne-create') }}" class="btn text-white" style="background: linear-gradient(to right, #84addb , #84addb);">Ajouter une personne</a>
+    </div>
 </div>
 
 @endsection
