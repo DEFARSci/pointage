@@ -84,7 +84,11 @@
   </div>
   <div class="row">
     <div class="col-md-2">
+      @auth
+     @if(auth()->user()->name=='admin')
       <button type="button" class="btn  text-white" style="background: #84addb;" onclick="window.location.href='{{route('paiement',['carte_id'=>$userPointer->carte_id])}}'">paiement</button>
+      @endif
+      @endauth
     </div>
     <div class="col-md-5 d-flex justify-content-end ">
       <h6 class="p-3 text-white" style="background:#84addb;"> Montant verser :{{$totalpaiement}} fr</h6>
