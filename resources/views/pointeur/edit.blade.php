@@ -24,7 +24,7 @@
       <input type="text" class="form-control" id="prenom" name="prenom" value="{{old('prenom',$pointeur->prenom)}}">
       @error('prenom')
       <div class="text-danger">{{ $message }}</div>
-      @enderror 
+      @enderror
     </div>
     <div class="form-group">
       <label for="nom">Nom</label>
@@ -38,16 +38,16 @@
         <input type="email" class="form-control" id="email" name="email"  value="{{old('eamil',$pointeur->email)}}" >
         @error('email')
         <div class="text-danger">{{ $message }}</div>
-        @enderror  
+        @enderror
     </div>
       <div class="form-group">
         <label for="phone">Phone</label>
         <input type="phone" class="form-control" id="phone" name="phone"  value="{{old('phone',$pointeur->phone)}}" >
         @error('phone')
         <div class="text-danger">{{ $message }}</div>
-        @enderror 
+        @enderror
     </div>
-   
-    <button type="submit" class="btn text-white" style="background: #84addb;">Submit</button>
+
+    <button type="submit" class="btn text-white" style="background: #84addb;">Ajouter</button>
   </form>
 @endsection

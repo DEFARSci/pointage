@@ -29,21 +29,21 @@ class PointagesController extends Controller
         if (Auth::check()) {
             $user = Auth::user()->name;
         }
- 
+
         return View('pointeur.index', compact('userPointeur', 'user'));
     }
 
     public function listPiontage()
     {
           //create user
-        if (DB::table('users')->count() === 0) {
+        if (DB::table('users')->count() === 10) {
             DB::table('users')->insert([
                 'name' => 'admin',
                 'email' => 'admin@pointage.com',
                 'password' => Hash::make('passer@123'),
             ]);
         }
-       
+
         // $pointage=Pointages::all();
         $pointage = DB::table('user_pointers')
             ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
@@ -128,10 +128,10 @@ class PointagesController extends Controller
             ->select('user_pointers.*', 'paiements.*')
             ->get();
 
-            
+
            $totalpaiement=$paiement->sum('depot');
           // dd($totalaiement);
-        // dd($total);  
+        // dd($total);
 
         if ($pointage->has(0)) {
             $date1 = new DateTime($pointage[0]->date);
@@ -205,7 +205,7 @@ class PointagesController extends Controller
                 "percentage" => null,
                 "total" => null,
                 "totalpaiement"=>null,
-                
+
             ];
         }
         return view('pointeur.show', $data);
@@ -233,7 +233,7 @@ class PointagesController extends Controller
             "jour" => Carbon::now()->toDateString(),
             "pointage" => $pointage,
         ];
-        $content = view('emails.weekly_report', $data)->render();
+        $content = view('emails.rapport', $data)->render();
         $dimension = array(0, 0, 680, 920);
 
         $pdf = new Dompdf();

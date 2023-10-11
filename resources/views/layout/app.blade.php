@@ -16,26 +16,28 @@
 </head>
 
 <nav class="navbar navbar-expand-lg  " style="background: linear-gradient(to right,#84addb , #84addb );">
-  
+
   <a class="navbar-brand  text-white ml-4"  href="{{route('Pointer')}}">
   <img src="{{asset('pt.png')}}" alt="" srcset="" width="50px" height="50px">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
 
-  
+
+
   <div class=" collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
-    
+
     <div class="navbar-nav border border-white rounded-5 border-3 ">
       <a class=" ml-3 mr-3  nav-link text-white fs-5" href="{{route('Pointer')}}">Pointage</a>
       <a class=" ml-3 mr-3  nav-link  text-white fs-5" href="{{route('userPointer')}}">Tableau de Bord</a>
-      <a class="mr-3 ml-3 nav-link  text-white fs-5" href="{{route('indexp')}}">Rapport</a>
-      @auth 
+
+      @auth
       @if (auth()->user()->name=='admin')
+      <a class="mr-3 ml-3 nav-link  text-white fs-5" href="{{route('indexp')}}">Rapport</a>
       <a class=" mr-3 ml-3 nav-link  text-white fs-5" href="/register" >Ajout Utilisateur</a>
-      @endif   
+      <a class=" mr-3 ml-3 nav-link  text-white fs-5" href="{{ route('user') }}" >Liste Utilisateur</a>
+      @endif
       @endauth
      </div>
 
@@ -43,7 +45,7 @@
   <div class="collapse navbar-collapse justify-content-end">
     @auth
     <div class="dropdown">
-      @auth 
+      @auth
       <button class="btn  dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ auth()->user()->name }}
       </button>
@@ -61,31 +63,31 @@
       </div>
     </div>
 
- 
-     
-  
-   
- 
+
+
+
+
+
    @endauth
        <div class="navbar-nav p-3">
          @guest
-           
+
          <a class="nav-link  text-white " href="/login" >Login</a>
          @endguest
-      
-      
+
+
            </div>
   </div>
-  
+
 </nav>
 
 <nav class="navbar navbar-expand-lg navbar-light " >
-  
+
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-  
+
       </div>
-  
-  
+
+
 </nav>
 
 

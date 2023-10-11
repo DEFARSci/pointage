@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <div class="ml-6">
-    
-           
+
+
             <h3>{{ $userPointer->prenom}}&nbsp{{ $userPointer->nom }} </h3>
             <h6><b >Carte_ID : </b>{{ $userPointer->carte_id }}</h6>
             <h6><b >Email : </b>{{ $userPointer->email }}</h6>
-            <h6><b>Phone : </b>{{ $userPointer->phone }}</h6>   
+            <h6><b>Phone : </b>{{ $userPointer->phone }}</h6>
               <div class="container  justify-content-center">
                 <div class="row">
 
@@ -36,9 +36,9 @@
                   </select>
              <button type="submit" class="btn  text-white" style="background: linear-gradient(to right,#84addb ,  #84addb );"
              > <i class="fas fa-search"></i></button>
-                  
+
                       </div>
-                
+
               </form>
               <div class="table-responsive mt-2">
 
@@ -51,17 +51,17 @@
             <th scope="col"class=" text-white">Arrive</th>
             <th scope="col"class=" text-white">Depart</th>
             <th scope="col"class=" text-white">Paiement-Retard</th>
-    
+
   </thead>
 
   <tbody>
     @if ($pointage ==null)
     <h1 class="bg-danger">La personne n'a pas encore pointer</h1>
-        
+
     @else
-    
+
              @foreach ($pointage as $pointeur )
-             
+
 
              <tr>
 
@@ -75,12 +75,12 @@
         </tr>
 
     @endforeach
-    
+
     </tbody>
 </table>
                </div>
 @endif
-    </div > 
+    </div >
   </div>
   <div class="row">
     <div class="col-md-2">
@@ -96,30 +96,30 @@
     </div>
     <div class="col-md-5 d-flex justify-content-end ">
       <h6 class="p-3 text-white " style="background:#84addb;"> Dette Totale :{{$total-$totalpaiement}} fr</h6>
-      
+
 
     </div>
-    
-  
+
+
   </div>
-  
+
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
             google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
-      
+
             function drawChart() {
-      
+
                 var percentage = {{ $percentage }};
 
 var data = google.visualization.arrayToDataTable([
   ['Task', 'Hours per Day'],
   ['Présent',     percentage],
-  ['Abscent',     100-percentage]
- 
- 
+  ['Abscent',   100-percentage<0 ? 0 :100-percentage]
+
+
 ]);
-      
+
               var options = {
                 // title: 'My Daily Activities'
                // title: 'Taux de présence',
@@ -143,18 +143,18 @@ var data = google.visualization.arrayToDataTable([
                   //  textStyle: {color: 'blue', fontSize: 16
                   // }}
                 colors: ['#84addb','#e9651e'],
-                
+
                     // is3D: true
-              
-                
+
+
               };
-      
+
               var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      
+
               chart.draw(data, options);
             }
           </script>
-    
+
 
 
 {{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -169,8 +169,8 @@ var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
       ['Work',     percentage],
       ['Eat',     100-percentage]
-     
-     
+
+
     ]);
 
     var options = {

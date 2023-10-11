@@ -1,7 +1,7 @@
 
   @extends('layout.app')
   @section('content')
-  
+
   <div class="row">
     <div class="col-md-2"></div>
     <div  class="d-flex justify-content-center align-items-center  col-8 mb-3" style="background:#84addb;">
@@ -23,15 +23,15 @@
         @if (count($pointage)==0)
           <h1>Pas de pointage</h1>
           @else
-      
+
         <tbody>
             @foreach ($pointage as $poitage )
-    
+
           <tr>
             <th scope="row">{{$poitage->id}}</th>
             <td>{{$poitage->prenom}}</td>
             <td>{{$poitage->nom}}</td>
-            @if (strtotime($poitage->heurDarriver) < strtotime("9:00:00"))
+            @if (strtotime($poitage->heurDarriver) <= strtotime("9:00:00"))
     <td>{{$poitage->heurDarriver}}</td>
 @endif
 @if (strtotime("9:01:00") < strtotime($poitage->heurDarriver) && strtotime($poitage->heurDarriver) <= strtotime("9:10:59"))
@@ -41,18 +41,18 @@
     <td class="bg-danger">{{$poitage->heurDarriver}}</td>
 @endif
 
-            
-          
+
+
             <td >{{$poitage->heurDepart}}</td>
             <td>{{$poitage->paiementRetard}}</td>
           </tr>
           @endforeach
-          
+
         </tbody>
         @endif
       </table>
    </div>
-      
 
-      
+
+
 @endsection

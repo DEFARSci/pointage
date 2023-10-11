@@ -27,12 +27,12 @@ class PersonneController extends Controller
      */
     public function create()
     {
-        
+
     return view('pointeur.personne-create');
 
     }
 
-    
+
 
 
     /**
@@ -46,7 +46,7 @@ class PersonneController extends Controller
         $request->validate([
             'nom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'prenom' => ['required', 'confirmed', 'string', 'max:255'],
+            'prenom' => ['required', 'string', 'max:255'],
             'role' => ['required'],
         ]);
         $personne = new Personne;
@@ -54,11 +54,11 @@ class PersonneController extends Controller
         $personne->prenom=$request->prenom;
         $personne->email=$request->email;
         $personne->role=$request->role;
-        
-       
+
+
         $personne->save();
 
-        
+
 
 
         return redirect()->route('indexp')->with('success', 'Personne ajouter avec succèss');
@@ -108,7 +108,7 @@ class PersonneController extends Controller
         ]);
         $personne = Personne::find($id);
     // Mettez à jour les champs de la personne en utilisant les données du formulaire ($request)
-    
+
         $personne->nom=$request->nom;
         $personne->prenom=$request->prenom;
         $personne->email=$request->email;

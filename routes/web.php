@@ -9,6 +9,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PointagesController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserPointerController;
 
 /*
@@ -65,3 +66,6 @@ Route::post('/paiment', [PaiementController::class, 'postpaiment'])->name('postp
 //         ->send(new  WeeklyReportMail());
 // });
 
+//utilisateur
+Route::get('/user', [UserAdminController::class, 'index'])->name('user');
+Route::delete('/user/{id}', [UserAdminController::class,'destroy'])->name('user.destroy');
