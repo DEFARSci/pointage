@@ -30,7 +30,7 @@
           <tr>
             <td>{{$poitage->prenom}}</td>
             <td>{{$poitage->nom}}</td>
-            @if (strtotime($poitage->heurDarriver) <= strtotime("9:00:00"))
+            @if (strtotime($poitage->heurDarriver) <= strtotime("9:00:59"))
     <td>{{$poitage->heurDarriver}}</td>
 @endif
 @if (strtotime("9:01:00") < strtotime($poitage->heurDarriver) && strtotime($poitage->heurDarriver) <= strtotime("9:10:59"))
