@@ -49,9 +49,10 @@ class PointagesController extends Controller
             ->join('pointages', 'user_pointers.carte_id', '=', 'pointages.pointers_carte_id')
             ->where('date', '=', Carbon::now()->toDateString())
             ->select('user_pointers.*', 'pointages.*')
+            ->orderBy('pointages.created_at', 'asc')
             ->get();
 
-        //dd($pointage);
+        // dd($pointage);
         $data = [
             "pointage" => $pointage,
             "jour" => Carbon::now()->toDateString()
